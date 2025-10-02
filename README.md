@@ -1,5 +1,8 @@
 # Jack-s-Game-Simulation
 
+https://github.com/user-attachments/assets/f5272fb2-6676-4d1d-888f-f5527167ab39
+
+
 <p align="center">
   <img width="986" height="753" alt="Image" src="https://github.com/user-attachments/assets/d8aec772-41c1-46fa-b1bb-2ddb4cdb7f0d" />
 </p>
