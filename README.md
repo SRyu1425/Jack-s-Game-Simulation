@@ -12,11 +12,14 @@ To solve this problem, I started off by implementing a few helper functions to m
 
 Using these transformations, I calculated the body velocities for both the jack and box. Because this system is 2D planar motion, we can simplify the inertia tensor to just a single rotational inertia value about the z-axis for the rotational kinetic energy components. By simplifying the representation of both objects to a single point mass, I calculated the rotational inertia to be equal to mr2. Combining these components into the kinetic energy equation, I then calculated the Lagrangian of the system. 
 
-<img width="728" height="89" alt="Image" src="https://github.com/user-attachments/assets/94546291-18e3-4f3c-a25a-5d2143cecd48" />
-
+<p align="center">
+  <img width="364" height="44" alt="Image" src="https://github.com/user-attachments/assets/94546291-18e3-4f3c-a25a-5d2143cecd48" />
+</p>
 The external forces on the system were limited to those on the box: a force in the y-axis to slow the gravitational force on the box, as well as a force/torque on the x and theta values of the box. After solving the forced Euler-Lagrange equations, I calculated the impact equations. 
 
-<img width="378" height="103" alt="Image" src="https://github.com/user-attachments/assets/c50c7612-351b-465b-b00f-b6aa34984417" />
+<p align="center">
+  <img width="189" height="51" alt="Image" src="https://github.com/user-attachments/assets/c50c7612-351b-465b-b00f-b6aa34984417" />
+</p>
 
 Because q is a 6-dimensional vector, I made Fext to be a 6-dimensional vector describing the forces on each of the configuration variables. This gave me 6 equations and 6 unknowns, which after solving for, gave me 6 expressions for the accelerations of each configuration variable and accompanying lambdify functions.
 
@@ -26,4 +29,4 @@ For instance, to detect impact between the top of the jack and the top of the bo
 
 Then, using the impact update laws below, I built a 16-element list of impact equations and loop over them in code: for each constraint I check whether φ > 0; if so, I solve the seven post-impact unknowns (x_b_dot_plus, y_b_dot_plus, theta_b_dot_plus, x_j_dot_plus, y_j_dot_plus, theta_j_dot_plus, lambda), keep the solution with a non-zero lambda, and update the state vector.
 
-<img width="1004" height="399" alt="Image" src="https://github.com/user-attachments/assets/8eaf329e-0e44-4f05-998a-47948759f5af" />
+<img width="502" height="200" alt="Image" src="https://github.com/user-attachments/assets/8eaf329e-0e44-4f05-998a-47948759f5af" />
