@@ -1,8 +1,10 @@
 # Jack-s-Game-Simulation
 
-<img width="1408" height="1076" alt="Image" src="https://github.com/user-attachments/assets/d8aec772-41c1-46fa-b1bb-2ddb4cdb7f0d" />
+<p align="center">
+  <img width="986" height="753" alt="Image" src="https://github.com/user-attachments/assets/d8aec772-41c1-46fa-b1bb-2ddb4cdb7f0d" />
+</p>
 
-For this project, I implemented Jack’s Game. The drawing above is a model of all the frames used as well as the configuration variables, q. The bottom left corner is the world reference frame, and each of the box and jack objects have five frames associated with it. There is a single frame at the center of each object, as well as four frames at each of the sides. All rigid body transformations and dynamics calculations are based on these 11 frames. 
+For this project, I implemented Jack’s Game. This is a detailed description of how the simulation was derived and first principles used. The drawing above is a model of all the frames used as well as the configuration variables, q. The bottom left corner is the world reference frame, and each of the box and jack objects have five frames associated with it. There is a single frame at the center of each object, as well as four frames at each of the sides. All rigid body transformations and dynamics calculations are based on these 11 frames. 
 
 From a high level overview, this simulation models a smaller jack bouncing around in a box/cup. Both objects are suspended in gravity, while the box has additional external forces acting on it. Specifically, I chose to have the box both oscillate side to side in the x direction and spin using sinusoidal functions. The final behavior shown in the animation makes sense: when not elastically impacting anything, the jack and box sink due to gravity, and the box shows forced motion as well. When inspecting closely, you can even see that the box feels the impact slightly and bounces in the opposite direction as the jack, which is reasonable when considering impact affecting both bodies.
 
@@ -29,4 +31,6 @@ For instance, to detect impact between the top of the jack and the top of the bo
 
 Then, using the impact update laws below, I built a 16-element list of impact equations and loop over them in code: for each constraint I check whether φ > 0; if so, I solve the seven post-impact unknowns (x_b_dot_plus, y_b_dot_plus, theta_b_dot_plus, x_j_dot_plus, y_j_dot_plus, theta_j_dot_plus, lambda), keep the solution with a non-zero lambda, and update the state vector.
 
-<img width="502" height="200" alt="Image" src="https://github.com/user-attachments/assets/8eaf329e-0e44-4f05-998a-47948759f5af" />
+<p align="center">
+  <img width="502" height="200" alt="Image" src="https://github.com/user-attachments/assets/8eaf329e-0e44-4f05-998a-47948759f5af" />
+</p>
